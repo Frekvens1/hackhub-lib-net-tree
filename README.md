@@ -62,7 +62,7 @@ bun install
 bun run build
 ```
 
-Copy `dist/mod.js` and `dist/manifest.json` into `<HackHub>/mods/lib-net-tree/`, then restart the game.
+Copy `mod.js`, `manifest.json` and `cover.png` from `dist/` into `<HackHub>/mods/lib-net-tree/`, then restart the game.
 
 ## License
 

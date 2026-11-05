@@ -6,5 +6,7 @@
     "author": "Frekvens1",
     "description": "Automatable and CLI friendly net_tree.py",
     "permissions": ["network", "events", "shell", "ui"],
-    "dependencies": []
+    "dependencies": [],
+    "cover": "cover.png",
+    "tags": ["net_tree.py", "network", "cli"]
 }
