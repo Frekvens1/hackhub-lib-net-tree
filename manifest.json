@@ -1,12 +1,12 @@
 {
     "id": "lib-net-tree",
     "name": "lib-net-tree",
-    "version": "1.0.0",
-    "apiVersion": 1,
+    "version": "1.0.1",
+    "apiVersion": 2,
     "author": "Frekvens1",
-    "description": "Automatable and CLI friendly net_tree.py",
     "permissions": ["network", "events", "shell", "ui"],
     "dependencies": [],
     "cover": "cover.png",
-    "tags": ["net_tree.py", "network", "cli"]
+    "tags": ["net_tree.py", "network", "cli"],
+    "description": "A terminal version of net_tree.py.\nIt lists every device on a network as a table or as JSON, so you can use it from your own scripts.\n\n[code]\n$ net_tree 178.203.253.95\nGenerating network tree...\n+-----------------------+-------------+----------+----------------------+-------------+\n| ip                    | lanIp       | type     | name                 | parent      |\n+-----------------------+-------------+----------+----------------------+-------------+\n| 178.203.253.95        | 192.168.1.1 | ROUTER   |                      |             |\n| ├─ 238.236.15.159     | 192.168.1.2 | SPLITTER |                      | 192.168.1.1 |\n| │  ├─ 187.181.92.197  | 192.168.1.3 | HOST     |                      | 192.168.1.2 |\n| │  └─ 121.160.143.252 | 192.168.1.7 | PRINTER  | MODEL: Sharp MX-3071 | 192.168.1.2 |\n| └─ 47.35.131.200      | 192.168.1.8 | SPLITTER |                      | 192.168.1.1 |\n|    └─ 130.94.197.92   | 192.168.1.9 | PRINTER  | MODEL: Zebra GX430t  | 192.168.1.8 |\n+-----------------------+-------------+----------+----------------------+-------------+\n[/code]\n\n[h2]Features[/h2]\n\n[list]\n[*]Accepts any IP in the network, not only the router's. A local 192.168.1.x address maps your own Wi-Fi network.\n[*]Shows the same information as the NetTree window, in the same tree order.\n[*]Plays fair: it needs python3, takes as long as net_tree.py, and counts for the same quest objectives.\n[*]Documented in the in-game Handbook, under [b]FrekLib[/b].\n[/list]\n\n[h2]Usage[/h2]\n\n[code]\napt-get install python3\napt-get install net_tree\n\nnet_tree <ip>          # table\nnet_tree <ip> -json    # JSON\n[/code]\n\n[h3]In scripts[/h3]\n\n[code]\ninterface NetTreeEntry {\n    ip: string;\n    lanIp: string | null;\n    type: string;          // ROUTER, DEVICE, FIREWALL, SPLITTER or PRINTER\n    nameType: \"ESSID\" | \"MODEL\" | \"HOST\" | null; // what name is, null when there is none\n    name: string | null;   // Wi-Fi name, printer model, or host name\n    parent: string | null; // LAN IP of the parent, null for the router\n}\n\nconst output = await Shell.Process.exec(\"net_tree 178.203.253.95 -json\", { silent: true });\nconst devices: NetTreeEntry[] = JSON.parse(out);\n\nconst printers = devices.filter(d => d.type === \"PRINTER\");\n[/code]\n\n[h2]Source code[/h2]\n\nThe source is on [url=https://github.com/Frekvens1/hackhub-lib-net-tree]GitHub[/url]. Subscribing here installs the mod for you, so you only need it if you want to build it yourself.\n\n[h2]License[/h2]\n\n[url=https://github.com/Frekvens1/hackhub-lib-net-tree/blob/main/LICENSE]MIT[/url]. Fork it, change it, and build on it!"
 }

@@ -48,7 +48,7 @@ interface NetTreeEntry {
 }
 
 const output = await Shell.Process.exec("net_tree 178.203.253.95 -json", { silent: true });
-const devices: NetTreeEntry[] = JSON.parse(out);
+const devices: NetTreeEntry[] = JSON.parse(output);
 
 const printers = devices.filter(d => d.type === "PRINTER");
 ```
