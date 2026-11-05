@@ -1,0 +1,10 @@
+{
+    "id": "lib-net-tree",
+    "name": "lib-net-tree",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "author": "Frekvens1",
+    "description": "Automatable and CLI friendly net_tree.py",
+    "permissions": ["filesystem", "network", "events", "mail", "bank", "shell", "ui"],
+    "dependencies": []
+}
