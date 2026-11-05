@@ -47,7 +47,7 @@ interface NetTreeEntry {
     parent: string | null; // LAN IP of the parent, null for the router
 }
 
-const out = await Shell.Process.exec("net_tree 178.203.253.95 -json", { silent: true });
+const output = await Shell.Process.exec("net_tree 178.203.253.95 -json", { silent: true });
 const devices: NetTreeEntry[] = JSON.parse(out);
 
 const printers = devices.filter(d => d.type === "PRINTER");
@@ -62,7 +62,7 @@ bun install
 bun run build
 ```
 
-Copy `mod.js`, `manifest.json` and `cover.png` from `dist/` into `<HackHub>/mods/lib-net-tree/`, then restart the game.
+Copy `mod.js`, `manifest.json` and `../hackhub-lib-pret/cover.png` from `dist/` into `<HackHub>/mods/lib-net-tree/`, then restart the game.
 
 ## License
 

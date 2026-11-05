@@ -44,7 +44,7 @@ interface NetTreeEntry {
     parent: string | null; // LAN IP of the parent, null for the router
 }
 
-const out = await Shell.Process.exec("net_tree 44.154.37.64 -json", { silent: true });
+const output = await Shell.Process.exec("net_tree 44.154.37.64 -json", { silent: true });
 const devices: NetTreeEntry[] = JSON.parse(out);
 
 for (const d of devices) {
